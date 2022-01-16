@@ -14,10 +14,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	UserRepo userRepo;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		System.out.println("username::"+username);
 		User user=userRepo.findByEmail(username);
 		if(user==null) {
 			throw new UsernameNotFoundException("User not found for email"+username);
 		}
+		System.out.println(user.getEmail()+" "+user.getPassword()+" "+user.getRoles());
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.getRoles());
 	}
 
