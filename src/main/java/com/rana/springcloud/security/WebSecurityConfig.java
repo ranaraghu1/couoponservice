@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		System.out.println("Basic authentication called");
 		http.httpBasic();
-		http.authorizeHttpRequests().mvcMatchers(HttpMethod.GET,"/couponapi/coupons/**").hasAnyRole("USER","ADMIN")
+		http.authorizeHttpRequests().mvcMatchers(HttpMethod.GET,"/couponapi/coupons").hasAnyRole("USER","ADMIN")
 		.mvcMatchers(HttpMethod.POST,"/couponapi/coupons").hasRole("ADMIN").and().csrf().disable();
 	}
 	
